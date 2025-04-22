@@ -1,0 +1,29 @@
+{
+  "dashboard": {
+    "title": "Factura Móvil Gateway Monitoring",
+    "panels": [
+      {
+        "title": "Queue Lengths",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "redis_command_result{command=\"LLEN\",key=~\"clients:pending|invoices:pending|tickets:pending\"}",
+            "legendFormat": "{{key}}"
+          }
+        ],
+        "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "title": "Requests Processed",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "gateway_workers_requests_total{status=\"completed\"}",
+            "legendFormat": "{{queue}}"
+          }
+        ],
+        "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+      }
+    ]
+  }
+}

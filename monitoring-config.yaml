@@ -1,0 +1,13 @@
+scrape_configs:
+  - job_name: 'gateway'
+    static_configs:
+      - targets: ['localhost:3000']
+alerting_rules:
+  - alert: QueueFailedNotEmpty
+    expr: redis_command_result{command="LLEN",key=~"clients:failed|invoices:failed"} > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Failed queue not empty"
+      description: "Queue {{ $labels.key }} has failed items."

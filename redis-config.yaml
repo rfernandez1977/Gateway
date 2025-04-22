@@ -1,0 +1,12 @@
+redis:
+  host: "localhost"
+  port: 6379
+  queues:
+    - "clients:pending"
+    - "invoices:pending"
+    - "tickets:pending"
+    - "products:pending"
+    - "clients:failed"
+    - "invoices:failed"
+    - "tickets:failed"
+    - "products:failed"

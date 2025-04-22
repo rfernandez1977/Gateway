@@ -1,0 +1,23 @@
+{
+  "title": "Factura Móvil Gateway Monitoring",
+  "style": {
+    "font": "Roboto",
+    "colors": {
+      "primary": "#3B82F6",
+      "error": "#EF4444",
+      "success": "#10B981"
+    }
+  },
+  "sections": [
+    {
+      "title": "Queue Lengths",
+      "description": "Shows the number of pending requests in each queue",
+      "metrics": ["clients:pending", "invoices:pending", "tickets:pending"]
+    },
+    {
+      "title": "Requests Processed",
+      "description": "Shows the total requests processed by workers",
+      "metrics": ["gateway_workers_requests_total{status=\"completed\"}"]
+    }
+  ]
+}
